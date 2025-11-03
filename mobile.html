@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Mobile Experience</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563eb", secondary: "#10b981" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body { font-family: 'Inter', sans-serif; }
+      .hero-bg {
+      background-image: url('https://readdy.ai/api/search-image?query=serene%20nature%20landscape%20with%20flowing%20water%20gentle%20mountains%20and%20soft%20organic%20botanical%20forms%20in%20muted%20sage%20green%20soft%20blue%20and%20warm%20earth%20tones%20creating%20a%20peaceful%20minimalist%20backdrop%20with%20subtle%20textures%20and%20natural%20elements%20perfect%20for%20premium%20technology%20showcase&width=1920&height=1080&seq=hero001&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      }
+      .device-float {
+      animation: deviceFloat 6s ease-in-out infinite;
+      }
+      @keyframes deviceFloat {
+      0%, 100% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(-20px) rotate(-3deg); }
+      }
+      .device-entrance {
+      opacity: 0;
+      transform: translateX(100px) translateY(50px) rotate(10deg) scale(0.8);
+      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .device-entrance.revealed {
+      opacity: 1;
+      transform: translateX(0) translateY(0) rotate(-5deg) scale(1);
+      }
+      .device-scroll-transform {
+      transition: transform 0.3s ease-out;
+      }
+      .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+      }
+      .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      }
+      .fade-in-up {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      }
+      .fade-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+      }
+      .fade-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+      }
+      .fade-in-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in-scale.revealed {
+      opacity: 1;
+      transform: scale(1);
+      }
+      .stagger-delay-1 { transition-delay: 0.1s; }
+      .stagger-delay-2 { transition-delay: 0.2s; }
+      .stagger-delay-3 { transition-delay: 0.3s; }
+      .stagger-delay-4 { transition-delay: 0.4s; }
+      .parallax-slow {
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+      }
+      .gradient-text {
+      background: linear-gradient(135deg, #1f2937 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      }
+      .cta-hover {
+      transition: all 0.3s ease;
+      }
+      .cta-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+      .nature-overlay {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <nav
+      class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="font-['Pacifico'] text-2xl text-gray-900">logo</div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Experience</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Features</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Design</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Innovation</a
+            >
+          </div>
+          <button
+            class="bg-primary text-white px-6 py-2 !rounded-button cta-hover whitespace-nowrap"
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="relative min-h-screen hero-bg flex items-center overflow-hidden"
+    >
+      <div class="nature-overlay absolute inset-0"></div>
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+          <div class="space-y-8 scroll-reveal">
+            <h1
+              class="text-6xl lg:text-7xl font-black leading-tight gradient-text"
+            >
+              Premium Mobile
+              <br />
+              Experience
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+              Discover the perfect harmony between cutting-edge technology and
+              sophisticated design. Experience mobile excellence redefined.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                class="bg-primary text-white px-8 py-4 !rounded-button text-lg font-semibold cta-hover whitespace-nowrap"
+              >
+                Explore Now
+              </button>
+              <button
+                class="border-2 border-gray-300 text-gray-700 px-8 py-4 !rounded-button text-lg font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Watch Demo
+              </button>
+            </div>
+          </div>
+          <div class="relative flex justify-center lg:justify-end">
+            <div class="device-container relative">
+              <div class="device-float device-entrance device-scroll-transform">
+                <div
+                  class="w-80 h-[640px] bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-2 shadow-2xl"
+                >
+                  <div
+                    class="w-full h-full bg-white rounded-2xl overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute top-6 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gray-300 rounded-full"
+                    ></div>
+                    <div class="pt-12 px-6">
+                      <div class="space-y-6">
+                        <div class="text-center">
+                          <div
+                            class="w-16 h-16 bg-primary rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                          >
+                            <div
+                              class="w-6 h-6 flex items-center justify-center"
+                            >
+                              <i
+                                class="ri-smartphone-line text-white text-xl"
+                              ></i>
+                            </div>
+                          </div>
+                          <h3 class="text-2xl font-bold text-gray-900">
+                            Premium App
+                          </h3>
+                          <p class="text-gray-600 text-sm mt-2">
+                            Sophisticated Design
+                          </p>
+                        </div>
+                        <div class="space-y-4">
+                          <div class="bg-gray-50 rounded-xl p-4">
+                            <div class="flex items-center space-x-3">
+                              <div
+                                class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center"
+                              >
+                                <div
+                                  class="w-4 h-4 flex items-center justify-center"
+                                >
+                                  <i
+                                    class="ri-star-fill text-white text-sm"
+                                  ></i>
+                                </div>
+                              </div>
+                              <div>
+                                <div class="font-semibold text-gray-900">
+                                  Premium Features
+                                </div>
+                                <div class="text-xs text-gray-500">
+                                  Enhanced Experience
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="bg-gray-50 rounded-xl p-4">
+                            <div class="flex items-center space-x-3">
+                              <div
+                                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                              >
+                                <div
+                                  class="w-4 h-4 flex items-center justify-center"
+                                >
+                                  <i
+                                    class="ri-shield-check-fill text-white text-sm"
+                                  ></i>
+                                </div>
+                              </div>
+                              <div>
+                                <div class="font-semibold text-gray-900">
+                                  Secure & Reliable
+                                </div>
+                                <div class="text-xs text-gray-500">
+                                  Enterprise Grade
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-20 fade-in-up">
+          <h2 class="text-5xl font-black text-gray-900 mb-6">
+            Crafted for Excellence
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Every detail meticulously designed to deliver an unparalleled mobile
+            experience that sets new standards in digital innovation.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="text-center fade-in-up stagger-delay-1">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl mx-auto mb-6 flex items-center justify-center"
+            >
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-palette-line text-white text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Sophisticated Design
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Minimalist aesthetics meet functional excellence in every
+              interface element, creating an intuitive and elegant user
+              experience.
+            </p>
+          </div>
+          <div class="text-center fade-in-up stagger-delay-2">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl mx-auto mb-6 flex items-center justify-center"
+            >
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-rocket-line text-white text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Peak Performance
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Lightning-fast interactions and seamless animations powered by
+              cutting-edge technology for an uncompromising mobile experience.
+            </p>
+          </div>
+          <div class="text-center fade-in-up stagger-delay-3">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl mx-auto mb-6 flex items-center justify-center"
+            >
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-shield-star-line text-white text-2xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Premium Security
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Enterprise-grade security protocols ensure your data remains
+              protected while maintaining the seamless user experience you
+              expect.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-20 fade-in-up">
+          <h2 class="text-5xl font-black text-gray-900 mb-6">
+            Premium Statistics
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Real numbers from real users experiencing the future of mobile
+            technology.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="text-center fade-in-scale stagger-delay-1">
+            <div class="text-5xl font-black text-primary mb-4">2.5M+</div>
+            <div class="text-lg font-semibold text-gray-900 mb-2">
+              Active Users
+            </div>
+            <div class="text-gray-600">Worldwide community</div>
+          </div>
+          <div class="text-center fade-in-scale stagger-delay-2">
+            <div class="text-5xl font-black text-secondary mb-4">99.9%</div>
+            <div class="text-lg font-semibold text-gray-900 mb-2">Uptime</div>
+            <div class="text-gray-600">Reliable performance</div>
+          </div>
+          <div class="text-center fade-in-scale stagger-delay-3">
+            <div class="text-5xl font-black text-primary mb-4">4.9</div>
+            <div class="text-lg font-semibold text-gray-900 mb-2">
+              App Rating
+            </div>
+            <div class="text-gray-600">User satisfaction</div>
+          </div>
+          <div class="text-center fade-in-scale stagger-delay-4">
+            <div class="text-5xl font-black text-secondary mb-4">150+</div>
+            <div class="text-lg font-semibold text-gray-900 mb-2">
+              Countries
+            </div>
+            <div class="text-gray-600">Global reach</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-20 fade-in-up">
+          <h2 class="text-5xl font-black text-gray-900 mb-6">
+            What Our Users Say
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover why millions trust our platform for their premium mobile
+            experience.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 fade-in-up stagger-delay-1"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20confident%20business%20woman%20with%20warm%20smile%20wearing%20modern%20business%20attire%20against%20clean%20neutral%20background%20high%20quality%20portrait%20photography&width=80&height=80&seq=user001&orientation=squarish"
+                alt="Sarah Chen"
+                class="w-16 h-16 rounded-full object-top mr-4"
+              />
+              <div>
+                <div class="font-semibold text-gray-900">Sarah Chen</div>
+                <div class="text-gray-600 text-sm">
+                  Product Manager at TechCorp
+                </div>
+              </div>
+            </div>
+            <div class="flex mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              "The attention to detail in this mobile experience is
+              extraordinary. It's transformed how our team collaborates and
+              stays productive on the go."
+            </p>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 fade-in-up stagger-delay-2"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20confident%20male%20executive%20with%20friendly%20expression%20wearing%20modern%20business%20suit%20against%20clean%20neutral%20background%20high%20quality%20portrait%20photography&width=80&height=80&seq=user002&orientation=squarish"
+                alt="Marcus Rivera"
+                class="w-16 h-16 rounded-full object-top mr-4"
+              />
+              <div>
+                <div class="font-semibold text-gray-900">Marcus Rivera</div>
+                <div class="text-gray-600 text-sm">
+                  Creative Director at InnovateLab
+                </div>
+              </div>
+            </div>
+            <div class="flex mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              "Finally, a mobile platform that matches our premium brand
+              standards. The design language is sophisticated and the
+              performance is flawless."
+            </p>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 fade-in-up stagger-delay-3"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20confident%20female%20entrepreneur%20with%20warm%20smile%20wearing%20contemporary%20business%20attire%20against%20clean%20neutral%20background%20high%20quality%20portrait%20photography&width=80&height=80&seq=user003&orientation=squarish"
+                alt="Elena Rodriguez"
+                class="w-16 h-16 rounded-full object-top mr-4"
+              />
+              <div>
+                <div class="font-semibold text-gray-900">Elena Rodriguez</div>
+                <div class="text-gray-600 text-sm">
+                  Founder at StartupVenture
+                </div>
+              </div>
+            </div>
+            <div class="flex mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              "This platform has revolutionized our mobile workflow. The
+              intuitive design and powerful features make complex tasks feel
+              effortless."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-20 fade-in-up">
+          <h2 class="text-5xl font-black text-gray-900 mb-6">Pricing Plans</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Choose the perfect plan for your premium mobile experience needs.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-200 fade-in-up stagger-delay-1"
+          >
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Starter</h3>
+              <div class="text-5xl font-black text-gray-900 mb-2">$29</div>
+              <div class="text-gray-600">per month</div>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">Premium mobile interface</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">Basic analytics</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">Email support</span>
+              </li>
+            </ul>
+            <button
+              class="w-full border-2 border-gray-300 text-gray-700 py-3 !rounded-button font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
+            >
+              Get Started
+            </button>
+          </div>
+          <div
+            class="bg-primary rounded-2xl p-8 text-white relative fade-in-up stagger-delay-2"
+          >
+            <div
+              class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-secondary text-white px-4 py-2 rounded-full text-sm font-semibold"
+            >
+              Most Popular
+            </div>
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold mb-4">Professional</h3>
+              <div class="text-5xl font-black mb-2">$79</div>
+              <div class="opacity-90">per month</div>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-white rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-primary text-xs"></i>
+                  </div>
+                </div>
+                <span>Everything in Starter</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-white rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-primary text-xs"></i>
+                  </div>
+                </div>
+                <span>Advanced analytics</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-white rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-primary text-xs"></i>
+                  </div>
+                </div>
+                <span>Priority support</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-white rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-primary text-xs"></i>
+                  </div>
+                </div>
+                <span>Custom integrations</span>
+              </li>
+            </ul>
+            <button
+              class="w-full bg-white text-primary py-3 !rounded-button font-semibold cta-hover whitespace-nowrap"
+            >
+              Start Free Trial
+            </button>
+          </div>
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-200 fade-in-up stagger-delay-3"
+          >
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Enterprise</h3>
+              <div class="text-5xl font-black text-gray-900 mb-2">$199</div>
+              <div class="text-gray-600">per month</div>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">Everything in Professional</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">White-label solutions</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">Dedicated support</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mr-3"
+                >
+                  <div class="w-2 h-2 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <span class="text-gray-600">SLA guarantee</span>
+              </li>
+            </ul>
+            <button
+              class="w-full border-2 border-gray-300 text-gray-700 py-3 !rounded-button font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
+            >
+              Contact Sales
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="fade-in-left">
+            <img
+              src="https://readdy.ai/api/search-image?query=elegant%20mobile%20interface%20design%20showcasing%20premium%20app%20screens%20with%20sophisticated%20typography%20clean%20layouts%20and%20modern%20UI%20elements%20displayed%20on%20multiple%20device%20mockups%20with%20soft%20natural%20lighting%20and%20minimalist%20aesthetic&width=600&height=400&seq=interface001&orientation=landscape"
+              alt="Premium Interface Design"
+              class="w-full h-auto rounded-2xl shadow-2xl object-top"
+            />
+          </div>
+          <div class="space-y-8 fade-in-right">
+            <h2 class="text-5xl font-black text-gray-900">
+              Interface Perfection
+            </h2>
+            <p class="text-xl text-gray-600 leading-relaxed">
+              Every pixel carefully considered, every interaction thoughtfully
+              crafted. Our interface design philosophy centers on creating
+              meaningful connections between users and technology.
+            </p>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1"
+                >
+                  <div class="w-3 h-3 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Intuitive Navigation
+                  </h4>
+                  <p class="text-gray-600">
+                    Effortless user journeys designed for maximum engagement and
+                    minimal friction.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-6 h-6 bg-secondary rounded-full flex items-center justify-center mt-1"
+                >
+                  <div class="w-3 h-3 flex items-center justify-center">
+                    <i class="ri-check-line text-white text-xs"></i>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Adaptive Layouts
+                  </h4>
+                  <p class="text-gray-600">
+                    Responsive design that adapts beautifully to any screen size
+                    or orientation.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="bg-primary text-white px-8 py-4 !rounded-button text-lg font-semibold cta-hover whitespace-nowrap"
+            >
+              Explore Features
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <div class="fade-in-up mb-16">
+          <h2 class="text-5xl font-black text-gray-900 mb-6">
+            Experience Innovation
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Join thousands of users who have already discovered the future of
+            mobile excellence. Your premium experience awaits.
+          </p>
+        </div>
+        <div
+          class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-12 fade-in-scale"
+        >
+          <div class="max-w-4xl mx-auto text-center text-white">
+            <h3 class="text-4xl font-bold mb-6">Ready to Get Started?</h3>
+            <p class="text-xl mb-8 opacity-90">
+              Transform your mobile experience today with our premium platform
+              designed for the modern user.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                class="bg-white text-primary px-8 py-4 !rounded-button text-lg font-semibold cta-hover whitespace-nowrap"
+              >
+                Start Free Trial
+              </button>
+              <button
+                class="border-2 border-white text-white px-8 py-4 !rounded-button text-lg font-semibold hover:bg-white hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Schedule Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="col-span-2">
+            <div class="font-['Pacifico'] text-3xl mb-6">logo</div>
+            <p class="text-gray-400 leading-relaxed max-w-md">
+              Crafting premium mobile experiences that bridge the gap between
+              sophisticated design and cutting-edge technology.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-6">Product</h4>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Enterprise</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-6">Company</h4>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Support</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400">
+            © 2025 Premium Mobile. All rights reserved.
+          </p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-twitter-line"></i>
+              </div>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-linkedin-line"></i>
+              </div>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-github-line"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script id="scroll-animations">
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+            }
+          });
+        }, observerOptions);
+        document
+          .querySelectorAll(
+            ".scroll-reveal, .fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale",
+          )
+          .forEach((el) => {
+            observer.observe(el);
+          });
+        const deviceElement = document.querySelector(".device-entrance");
+        if (deviceElement) {
+          observer.observe(deviceElement);
+        }
+      });
+    </script>
+    <script id="parallax-effects">
+      document.addEventListener("DOMContentLoaded", function () {
+        let ticking = false;
+        function updateParallax() {
+          const scrolled = window.pageYOffset;
+          const parallaxElements = document.querySelectorAll(".parallax-slow");
+          parallaxElements.forEach((element) => {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+          });
+          const deviceElement = document.querySelector(".device-scroll-transform");
+          if (deviceElement && deviceElement.classList.contains("revealed")) {
+            const deviceSpeed = 0.1;
+            const maxRotation = 8;
+            const scrollProgress = Math.min(scrolled / 1000, 1);
+            const rotation = -5 + scrollProgress * maxRotation;
+            const yOffset = -(scrolled * deviceSpeed);
+            deviceElement.style.transform = `translateY(${yOffset}px) rotate(${rotation}deg)`;
+          }
+          ticking = false;
+        }
+        function requestTick() {
+          if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }
+        window.addEventListener("scroll", requestTick);
+      });
+    </script>
+  </body>
+</html>
